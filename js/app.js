@@ -1,6 +1,6 @@
 var app = angular.module('OutboxApp', ['ngRoute']);
 
-app.config(function($routeProvider) {
+app.config(['$routeProvider', function($routeProvider) {
  $routeProvider
  .when('/outbox', {
    controller: 'HomeController',
@@ -9,5 +9,8 @@ app.config(function($routeProvider) {
  .when('/outbox/:id', {
    controller: 'EmailController',
    templateUrl: 'views/email.html'
+ })
+ .otherwise({
+   redirectTo: '/outbox'
  });
-});
+}]);
